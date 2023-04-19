@@ -69,3 +69,25 @@ function size() {
 }
 
 console.log(size());
+
+// return the first node of the list
+function head() {
+  return list.nextAddress;
+}
+
+console.log(head());
+
+// return the last node of the list
+function tail() {
+  let tmp = list.nextAddress;
+  while (tmp != null) {
+    if (tmp.nextAddress == null) {
+      break;
+    } else {
+      tmp = tmp.nextAddress;
+    }
+  }
+  return tmp;
+}
+console.log("The last node in the list: ");
+console.log(tail());
