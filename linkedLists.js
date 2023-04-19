@@ -56,3 +56,16 @@ prepend("e");
 prepend("f");
 
 console.log(list);
+
+// return total number of nodes in the list
+function size() {
+  let count = 0;
+  let tmp = list.nextAddress;
+  while (tmp != null) {
+    tmp = tmp.nextAddress;
+    count += 1;
+  }
+  return `Total number of nodes in the list: ${count}`;
+}
+
+console.log(size());
