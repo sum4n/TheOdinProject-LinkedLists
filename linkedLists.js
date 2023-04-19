@@ -67,10 +67,10 @@ function size() {
     tmp = tmp.nextAddress;
     count += 1;
   }
-  return `Total number of nodes in the list: ${count}`;
+  return count;
 }
 console.log();
-console.log(size());
+console.log(`Total number of nodes in the list is: ${size()}`);
 
 // return the first node of the list
 function head() {
@@ -98,8 +98,6 @@ console.log(tail());
 
 // return the node at given index
 function at(index) {
-  console.log();
-  console.log(`Node at index ${index} is: `);
   let count = 0;
   let tmp = list.nextAddress;
   while (tmp != null) {
@@ -111,5 +109,20 @@ function at(index) {
     }
   }
 }
-
+console.log();
+console.log(`Node at specified index is: `);
 console.log(at(1));
+
+// remove the last node from the list
+function pop() {
+  // get the second last node and set its nextAddress to null.
+  let secondLastNodeIndex = size() - 2;
+  let secondLastNode = at(secondLastNodeIndex);
+  // console.log(secondLastNode);
+  secondLastNode.nextAddress = null;
+}
+
+pop();
+console.log();
+console.log("Poped last node");
+console.log(list);
