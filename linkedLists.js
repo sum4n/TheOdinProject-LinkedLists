@@ -33,6 +33,7 @@ append("a");
 append("b");
 append("c");
 append("d");
+console.log("List after appending: ");
 console.log(list);
 
 // add new node containing value to the start of the list
@@ -51,7 +52,8 @@ function prepend(value) {
     list.nextAddress = obj;
   }
 }
-
+console.log();
+console.log("List after prepending: ");
 prepend("e");
 prepend("f");
 
@@ -67,14 +69,15 @@ function size() {
   }
   return `Total number of nodes in the list: ${count}`;
 }
-
+console.log();
 console.log(size());
 
 // return the first node of the list
 function head() {
   return list.nextAddress;
 }
-
+console.log();
+console.log("The first node in the list: ");
 console.log(head());
 
 // return the last node of the list
@@ -89,5 +92,24 @@ function tail() {
   }
   return tmp;
 }
+console.log();
 console.log("The last node in the list: ");
 console.log(tail());
+
+// return the node at given index
+function at(index) {
+  console.log();
+  console.log(`Node at index ${index} is: `);
+  let count = 0;
+  let tmp = list.nextAddress;
+  while (tmp != null) {
+    if (count == index) {
+      return tmp;
+    } else {
+      tmp = tmp.nextAddress;
+      count++;
+    }
+  }
+}
+
+console.log(at(1));
