@@ -9,7 +9,7 @@ const Node = (data = null, nextAddress = null) => {
   return { data, nextAddress };
 };
 
-// adds new node containing value at the end of the list
+// adds new node containing value to the end of the list
 function append(value) {
   if (value == null) return;
 
@@ -33,4 +33,26 @@ append("a");
 append("b");
 append("c");
 append("d");
+console.log(list);
+
+// add new node containing value to the start of the list
+function prepend(value) {
+  if (value == null) return;
+
+  let obj = Node(value);
+
+  // if list is empty, just add the object to nextAddress
+  // else change the object's pointer to old head node and
+  // make it new head node.
+  if (list.nextAddress == null) {
+    list.nextAddress = obj;
+  } else {
+    obj.nextAddress = list.nextAddress;
+    list.nextAddress = obj;
+  }
+}
+
+prepend("e");
+prepend("f");
+
 console.log(list);
