@@ -125,5 +125,20 @@ function pop() {
 }
 
 pop();
-console.log();
+console.log("New list: ");
 console.log(list);
+
+// returns true if value is in list, otherwise returns false
+function contains(value) {
+  let tmp = list.nextAddress;
+  if (tmp.data == value) return true;
+  while (tmp.data != value) {
+    tmp = tmp.nextAddress;
+    if (tmp == null) return false;
+    if (tmp.data == value) return true;
+  }
+}
+
+console.log();
+console.log(contains("e"));
+console.log(contains("Expecto Patronum"));
