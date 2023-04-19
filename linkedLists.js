@@ -118,11 +118,12 @@ function pop() {
   // get the second last node and set its nextAddress to null.
   let secondLastNodeIndex = size() - 2;
   let secondLastNode = at(secondLastNodeIndex);
-  // console.log(secondLastNode);
+  console.log();
+  console.log("Poped node:");
+  console.log(secondLastNode.nextAddress);
   secondLastNode.nextAddress = null;
 }
 
 pop();
 console.log();
-console.log("Poped last node");
 console.log(list);
