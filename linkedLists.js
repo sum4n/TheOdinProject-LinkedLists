@@ -141,4 +141,20 @@ function contains(value) {
 
 console.log();
 console.log(contains("e"));
-console.log(contains("Expecto Patronum"));
+console.log(contains("E"));
+
+// return index of node if found or return null
+function find(value) {
+  let index = 0;
+  let tmp = list.nextAddress;
+  if (list.nextAddress.data == value) return index;
+
+  while (tmp.data != value) {
+    tmp = tmp.nextAddress;
+    index++;
+    if (tmp == null) return null;
+    if (tmp.data == value) return index;
+  }
+}
+
+console.log(find("v"));
