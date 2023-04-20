@@ -140,8 +140,8 @@ function contains(value) {
 }
 
 console.log();
-console.log(contains("e"));
-console.log(contains("E"));
+console.log(`List contains value 'e': ${contains("e")}`);
+console.log(`List contains value 'x': ${contains("x")}`);
 
 // return index of node if found or return null
 function find(value) {
@@ -156,8 +156,7 @@ function find(value) {
     if (tmp.data == value) return index;
   }
 }
-
-console.log(find("a"));
+console.log(`Index of value 'a': ${find("a")}`);
 
 // represent Linked List objects as strings, and print.
 function toString() {
@@ -174,4 +173,36 @@ function toString() {
   return outputList;
 }
 
+console.log(`Preview linked list objects: ${toString()}`);
+
+// insert new node with provided value at given index
+function insertAt(value, index) {
+  let lastIndex = size();
+  if (index > lastIndex || index < 0) {
+    return `Index should be within 0-${size()}`;
+  }
+  if (index == size()) {
+    append(value);
+    // return;
+  } else if (index == 0) {
+    // let firstNode = at(index);
+    // console.log(firstNode);
+    // let newNode = Node(value, firstNode);
+    // list.nextAddress = newNode;
+    prepend(value);
+    // return;
+  } else {
+    let tmpNode2 = at(index);
+    // console.log(tmpNode2.nextAddress);
+    let tmpNode1 = at(index - 1);
+    // console.log(tmpNode1);
+    let newNode = Node(value, tmpNode2);
+
+    tmpNode1.nextAddress = newNode;
+  }
+  console.log(`Inserter node with value "${value}" to index ${index}`);
+}
+
+console.log();
+insertAt("new", 5);
 console.log(`Preview linked list objects: ${toString()}`);
