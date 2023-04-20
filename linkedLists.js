@@ -157,4 +157,21 @@ function find(value) {
   }
 }
 
-console.log(find("v"));
+console.log(find("a"));
+
+// represent Linked List objects as strings, and print.
+function toString() {
+  let tmp = list.nextAddress;
+  let outputList = "";
+  while (tmp != null) {
+    // console.log(tmp.data);
+    outputList += `( ${tmp.data} )` + " -> ";
+    tmp = tmp.nextAddress;
+  }
+  // console.log(tmp);
+  outputList += tmp;
+  // console.log(outputList);
+  return outputList;
+}
+
+console.log(`Preview linked list objects: ${toString()}`);
