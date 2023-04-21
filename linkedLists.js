@@ -97,7 +97,32 @@ const LinkedList = (next = null) => {
     }
   };
 
-  return { linkedList, append, prepend, size, head, tail, at, pop, contains };
+  // returns index of node if found or null
+  const find = (value) => {
+    let index = 0;
+    let tmp = linkedList.next;
+    if (linkedList.next.data == value) return index;
+
+    while (tmp.data != value) {
+      tmp = tmp.next;
+      index++;
+      if (tmp == null) return null;
+      if (tmp.data == value) return index;
+    }
+  };
+
+  return {
+    linkedList,
+    append,
+    prepend,
+    size,
+    head,
+    tail,
+    at,
+    pop,
+    contains,
+    find,
+  };
 };
 
 let list = LinkedList();
@@ -120,21 +145,7 @@ list.pop();
 console.log(list.linkedList);
 console.log(list.contains("a"));
 console.log(list.contains("aa"));
-
-// return index of node if found or return null
-function find(value) {
-  let index = 0;
-  let tmp = list.nextAddress;
-  if (list.nextAddress.data == value) return index;
-
-  while (tmp.data != value) {
-    tmp = tmp.nextAddress;
-    index++;
-    if (tmp == null) return null;
-    if (tmp.data == value) return index;
-  }
-}
-// console.log(`Index of value 'a': ${find("a")}`);
+console.log(`Index of value 'b': ${list.find("b")}`);
 
 // represent Linked List objects as strings, and print.
 function toString() {
