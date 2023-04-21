@@ -175,7 +175,7 @@ function toString() {
 
 console.log(`Preview linked list objects: ${toString()}`);
 
-// insert new node with provided value at given index
+// inserts new node with provided value at given index
 function insertAt(value, index) {
   let lastIndex = size();
   if (index > lastIndex || index < 0) {
@@ -206,3 +206,32 @@ function insertAt(value, index) {
 console.log();
 insertAt("new", 5);
 console.log(`Preview linked list objects: ${toString()}`);
+insertAt("new2", 2);
+console.log(`Preview linked list objects: ${toString()}`);
+
+// removes node at given index;
+function removeAt(index) {
+  let highestIndex = size() - 1;
+  if (index < 0 || index > highestIndex) {
+    console.log(`Index should be between 0 and ${highestIndex}`);
+    return;
+  }
+
+  let thisNode = at(index);
+  console.log(`Node to remove (${thisNode.data})`);
+
+  if (index == highestIndex) {
+    pop();
+    return;
+  }
+
+  let nextNode = at(index + 1);
+  // console.log(nextNode.data);
+
+  thisNode.data = nextNode.data;
+  thisNode.nextAddress = nextNode.nextAddress;
+}
+
+console.log();
+removeAt(1);
+console.log(toString());
