@@ -126,6 +126,27 @@ const LinkedList = (next = null) => {
     return outputList;
   };
 
+  // inserts new node with provided value at given index
+  const insertAt = (value, index) => {
+    let lastIndex = size();
+    if (index > lastIndex || index < 0) {
+      console.log(`Index should be within 0-${size()}`);
+      return;
+    }
+    if (index == size()) {
+      append(value);
+    } else if (index == 0) {
+      prepend(value);
+    } else {
+      let tmpNode2 = at(index);
+      let tmpNode1 = at(index - 1);
+      let newNode = Node(value, tmpNode2);
+
+      tmpNode1.next = newNode;
+    }
+    console.log(`Insert node with value "${value}" to index ${index}`);
+  };
+
   return {
     linkedList,
     append,
@@ -138,6 +159,7 @@ const LinkedList = (next = null) => {
     contains,
     find,
     toString,
+    insertAt,
   };
 };
 
@@ -163,40 +185,10 @@ console.log(list.contains("a"));
 console.log(list.contains("aa"));
 console.log(`Index of value 'b': ${list.find("b")}`);
 console.log(list.toString());
-
-// inserts new node with provided value at given index
-function insertAt(value, index) {
-  let lastIndex = size();
-  if (index > lastIndex || index < 0) {
-    return `Index should be within 0-${size()}`;
-  }
-  if (index == size()) {
-    append(value);
-    // return;
-  } else if (index == 0) {
-    // let firstNode = at(index);
-    // console.log(firstNode);
-    // let newNode = Node(value, firstNode);
-    // list.nextAddress = newNode;
-    prepend(value);
-    // return;
-  } else {
-    let tmpNode2 = at(index);
-    // console.log(tmpNode2.nextAddress);
-    let tmpNode1 = at(index - 1);
-    // console.log(tmpNode1);
-    let newNode = Node(value, tmpNode2);
-
-    tmpNode1.nextAddress = newNode;
-  }
-  console.log(`Inserter node with value "${value}" to index ${index}`);
-}
-
-// console.log();
-// insertAt("new", 5);
-// console.log(`Preview linked list objects: ${toString()}`);
-// insertAt("new2", 2);
-// console.log(`Preview linked list objects: ${toString()}`);
+list.insertAt("new", 3);
+console.log(list.toString());
+list.insertAt("new2", 0);
+console.log(list.toString());
 
 // removes node at given index;
 function removeAt(index) {
