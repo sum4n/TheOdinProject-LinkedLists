@@ -1,10 +1,14 @@
 # TheOdinProject-LinkedLists
 
 link: https://sum4n.github.io/TheOdinProject-LinkedLists/
+
 Use web browser's console.
 
 Make a new Linked List ->
+
 let list = LinkedList();
+list.linkedList -> shows the full linked list.
+
 list.linkedList -> shows the full linked list.
 
 Use functions with list.function ->
@@ -20,7 +24,7 @@ head() -> returns the first node in the list.
 
 tail() -> returns the last node in the list.
 
-at(inded) -> returns the node at the given index.
+at(index) -> returns the node at the given index.
 
 pop() -> removes the last element from the list.
 
