@@ -111,6 +111,21 @@ const LinkedList = (next = null) => {
     }
   };
 
+  // represent linked list objects as string and print
+  const toString = () => {
+    let tmp = linkedList.next;
+    let outputList = "";
+    while (tmp != null) {
+      // console.log(tmp.data);
+      outputList += `( ${tmp.data} )` + " -> ";
+      tmp = tmp.next;
+    }
+    // console.log(tmp);
+    outputList += tmp;
+    // console.log(outputList);
+    return outputList;
+  };
+
   return {
     linkedList,
     append,
@@ -122,6 +137,7 @@ const LinkedList = (next = null) => {
     pop,
     contains,
     find,
+    toString,
   };
 };
 
@@ -146,23 +162,7 @@ console.log(list.linkedList);
 console.log(list.contains("a"));
 console.log(list.contains("aa"));
 console.log(`Index of value 'b': ${list.find("b")}`);
-
-// represent Linked List objects as strings, and print.
-function toString() {
-  let tmp = list.nextAddress;
-  let outputList = "";
-  while (tmp != null) {
-    // console.log(tmp.data);
-    outputList += `( ${tmp.data} )` + " -> ";
-    tmp = tmp.nextAddress;
-  }
-  // console.log(tmp);
-  outputList += tmp;
-  // console.log(outputList);
-  return outputList;
-}
-
-// console.log(`Preview linked list objects: ${toString()}`);
+console.log(list.toString());
 
 // inserts new node with provided value at given index
 function insertAt(value, index) {
