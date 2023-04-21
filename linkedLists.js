@@ -147,6 +147,29 @@ const LinkedList = (next = null) => {
     console.log(`Insert node with value "${value}" to index ${index}`);
   };
 
+  // remove node at given index
+  const removeAt = (index) => {
+    let highestIndex = size() - 1;
+    if (index < 0 || index > highestIndex) {
+      console.log(`Index should be between 0 and ${highestIndex}`);
+      return;
+    }
+
+    let thisNode = at(index);
+    console.log(`Node to remove (${thisNode.data})`);
+
+    if (index == highestIndex) {
+      pop();
+      return;
+    }
+
+    let nextNode = at(index + 1);
+    // console.log(nextNode.data);
+
+    thisNode.data = nextNode.data;
+    thisNode.next = nextNode.next;
+  };
+
   return {
     linkedList,
     append,
@@ -160,6 +183,7 @@ const LinkedList = (next = null) => {
     find,
     toString,
     insertAt,
+    removeAt,
   };
 };
 
@@ -189,30 +213,5 @@ list.insertAt("new", 3);
 console.log(list.toString());
 list.insertAt("new2", 0);
 console.log(list.toString());
-
-// removes node at given index;
-function removeAt(index) {
-  let highestIndex = size() - 1;
-  if (index < 0 || index > highestIndex) {
-    console.log(`Index should be between 0 and ${highestIndex}`);
-    return;
-  }
-
-  let thisNode = at(index);
-  console.log(`Node to remove (${thisNode.data})`);
-
-  if (index == highestIndex) {
-    pop();
-    return;
-  }
-
-  let nextNode = at(index + 1);
-  // console.log(nextNode.data);
-
-  thisNode.data = nextNode.data;
-  thisNode.nextAddress = nextNode.nextAddress;
-}
-
-// console.log();
-// removeAt(1);
-// console.log(toString());
+list.removeAt(4);
+console.log(list.toString());
