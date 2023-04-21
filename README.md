@@ -5,6 +5,7 @@ Use web browser's console.
 
 Make a new Linked List ->
 let list = LinkedList();
+list.linkedList -> shows the full linked list.
 
 Use functions with list.function ->
 append, prepend, size, head, tail, at, pop, contains, find, toString, insertAt, removeAt.
