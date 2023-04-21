@@ -49,7 +49,12 @@ const LinkedList = (next = null) => {
     return count;
   };
 
-  return { linkedList, append, prepend, size };
+  // return the first node of the list
+  const head = () => {
+    return linkedList.next;
+  };
+
+  return { linkedList, append, prepend, size, head };
 };
 
 let list = LinkedList();
@@ -60,15 +65,9 @@ console.log(list.linkedList);
 console.log();
 list.prepend("z");
 console.log(list.linkedList);
-console.log(list.size());
-
-// return the first node of the list
-function head() {
-  return list.nextAddress;
-}
-// console.log();
-// console.log("The first node in the list: ");
-// console.log(head());
+console.log(`Number of nodes in the list: ${list.size()}`);
+console.log("First node: ");
+console.log(list.head());
 
 // return the last node of the list
 function tail() {
