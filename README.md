@@ -1,6 +1,7 @@
 # TheOdinProject-LinkedLists
 
 link: https://sum4n.github.io/TheOdinProject-LinkedLists/
+
 Use web browser's console.
 
 Make a new Linked List ->
