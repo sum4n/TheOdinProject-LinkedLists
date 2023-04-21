@@ -1,13 +1,37 @@
-const LinkedList = (nextAddress = null) => {
+const NodeItem = (data = null, next = null) => {
+  return { data, next };
+};
+
+const LinkedList = (next = null) => {
   let data = "head";
-  return { data, nextAddress };
+
+  let linkedList = { data, next };
+
+  // add new node containing value to the end of the list
+  const append = (value) => {
+    if (value == null) return;
+
+    let obj = NodeItem(value);
+
+    if (linkedList.next == null) {
+      linkedList.next = obj;
+    } else {
+      let tmp = linkedList.next;
+      while (tmp.next != null) {
+        tmp = tmp.next;
+      }
+      tmp.next = obj;
+    }
+  };
+
+  return { linkedList, append };
 };
 
 let list = LinkedList();
-
-const Node = (data = null, nextAddress = null) => {
-  return { data, nextAddress };
-};
+list.append("a");
+list.append("b");
+list.append("c");
+console.log(list.linkedList);
 
 // adds new node containing value to the end of the list
 function append(value) {
@@ -29,12 +53,12 @@ function append(value) {
   }
 }
 
-append("a");
-append("b");
-append("c");
-append("d");
-console.log("List after appending: ");
-console.log(list);
+// append("a");
+// append("b");
+// append("c");
+// append("d");
+// console.log("List after appending: ");
+// console.log(list);
 
 // add new node containing value to the start of the list
 function prepend(value) {
@@ -52,12 +76,12 @@ function prepend(value) {
     list.nextAddress = obj;
   }
 }
-console.log();
-console.log("List after prepending: ");
-prepend("e");
-prepend("f");
+// console.log();
+// console.log("List after prepending: ");
+// prepend("e");
+// prepend("f");
 
-console.log(list);
+// console.log(list);
 
 // return total number of nodes in the list
 function size() {
@@ -69,16 +93,16 @@ function size() {
   }
   return count;
 }
-console.log();
-console.log(`Total number of nodes in the list is: ${size()}`);
+// console.log();
+// console.log(`Total number of nodes in the list is: ${size()}`);
 
 // return the first node of the list
 function head() {
   return list.nextAddress;
 }
-console.log();
-console.log("The first node in the list: ");
-console.log(head());
+// console.log();
+// console.log("The first node in the list: ");
+// console.log(head());
 
 // return the last node of the list
 function tail() {
@@ -92,9 +116,9 @@ function tail() {
   }
   return tmp;
 }
-console.log();
-console.log("The last node in the list: ");
-console.log(tail());
+// console.log();
+// console.log("The last node in the list: ");
+// console.log(tail());
 
 // return the node at given index
 function at(index) {
@@ -109,9 +133,9 @@ function at(index) {
     }
   }
 }
-console.log();
-console.log(`Node at specified index is: `);
-console.log(at(1));
+// console.log();
+// console.log(`Node at specified index is: `);
+// console.log(at(1));
 
 // remove the last node from the list
 function pop() {
@@ -124,9 +148,9 @@ function pop() {
   secondLastNode.nextAddress = null;
 }
 
-pop();
-console.log("New list: ");
-console.log(list);
+// pop();
+// console.log("New list: ");
+// console.log(list);
 
 // returns true if value is in list, otherwise returns false
 function contains(value) {
@@ -139,9 +163,9 @@ function contains(value) {
   }
 }
 
-console.log();
-console.log(`List contains value 'e': ${contains("e")}`);
-console.log(`List contains value 'x': ${contains("x")}`);
+// console.log();
+// console.log(`List contains value 'e': ${contains("e")}`);
+// console.log(`List contains value 'x': ${contains("x")}`);
 
 // return index of node if found or return null
 function find(value) {
@@ -156,7 +180,7 @@ function find(value) {
     if (tmp.data == value) return index;
   }
 }
-console.log(`Index of value 'a': ${find("a")}`);
+// console.log(`Index of value 'a': ${find("a")}`);
 
 // represent Linked List objects as strings, and print.
 function toString() {
@@ -173,7 +197,7 @@ function toString() {
   return outputList;
 }
 
-console.log(`Preview linked list objects: ${toString()}`);
+// console.log(`Preview linked list objects: ${toString()}`);
 
 // inserts new node with provided value at given index
 function insertAt(value, index) {
@@ -203,11 +227,11 @@ function insertAt(value, index) {
   console.log(`Inserter node with value "${value}" to index ${index}`);
 }
 
-console.log();
-insertAt("new", 5);
-console.log(`Preview linked list objects: ${toString()}`);
-insertAt("new2", 2);
-console.log(`Preview linked list objects: ${toString()}`);
+// console.log();
+// insertAt("new", 5);
+// console.log(`Preview linked list objects: ${toString()}`);
+// insertAt("new2", 2);
+// console.log(`Preview linked list objects: ${toString()}`);
 
 // removes node at given index;
 function removeAt(index) {
@@ -232,6 +256,6 @@ function removeAt(index) {
   thisNode.nextAddress = nextNode.nextAddress;
 }
 
-console.log();
-removeAt(1);
-console.log(toString());
+// console.log();
+// removeAt(1);
+// console.log(toString());
