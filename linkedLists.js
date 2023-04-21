@@ -86,7 +86,18 @@ const LinkedList = (next = null) => {
     secondLastNode.next = null;
   };
 
-  return { linkedList, append, prepend, size, head, tail, at, pop };
+  // returns true if value is in the list otherwise returns false
+  const contains = (value) => {
+    let tmp = linkedList.next;
+    if (tmp.data == value) return true;
+    while (tmp.data != value) {
+      tmp = tmp.next;
+      if (tmp == null) return false;
+      if (tmp.data == value) return true;
+    }
+  };
+
+  return { linkedList, append, prepend, size, head, tail, at, pop, contains };
 };
 
 let list = LinkedList();
@@ -107,21 +118,8 @@ console.log(list.at(2));
 console.log("Last node poped");
 list.pop();
 console.log(list.linkedList);
-
-// returns true if value is in list, otherwise returns false
-function contains(value) {
-  let tmp = list.nextAddress;
-  if (tmp.data == value) return true;
-  while (tmp.data != value) {
-    tmp = tmp.nextAddress;
-    if (tmp == null) return false;
-    if (tmp.data == value) return true;
-  }
-}
-
-// console.log();
-// console.log(`List contains value 'e': ${contains("e")}`);
-// console.log(`List contains value 'x': ${contains("x")}`);
+console.log(list.contains("a"));
+console.log(list.contains("aa"));
 
 // return index of node if found or return null
 function find(value) {
