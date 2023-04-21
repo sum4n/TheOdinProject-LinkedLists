@@ -54,7 +54,17 @@ const LinkedList = (next = null) => {
     return linkedList.next;
   };
 
-  return { linkedList, append, prepend, size, head };
+  // return the last node of the list
+  const tail = () => {
+    let tmp = linkedList.next;
+    while (tmp != null) {
+      if (tmp.next == null) break;
+      tmp = tmp.next;
+    }
+    return tmp;
+  };
+
+  return { linkedList, append, prepend, size, head, tail };
 };
 
 let list = LinkedList();
@@ -68,22 +78,8 @@ console.log(list.linkedList);
 console.log(`Number of nodes in the list: ${list.size()}`);
 console.log("First node: ");
 console.log(list.head());
-
-// return the last node of the list
-function tail() {
-  let tmp = list.nextAddress;
-  while (tmp != null) {
-    if (tmp.nextAddress == null) {
-      break;
-    } else {
-      tmp = tmp.nextAddress;
-    }
-  }
-  return tmp;
-}
-// console.log();
-// console.log("The last node in the list: ");
-// console.log(tail());
+console.log("Last node:");
+console.log(list.tail());
 
 // return the node at given index
 function at(index) {
