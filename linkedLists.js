@@ -78,7 +78,15 @@ const LinkedList = (next = null) => {
     }
   };
 
-  return { linkedList, append, prepend, size, head, tail, at };
+  // remove last node from the list
+  const pop = () => {
+    // get the second last node and set its next to null
+    let secondLastNodeIndex = size() - 2;
+    let secondLastNode = at(secondLastNodeIndex);
+    secondLastNode.next = null;
+  };
+
+  return { linkedList, append, prepend, size, head, tail, at, pop };
 };
 
 let list = LinkedList();
@@ -96,21 +104,9 @@ console.log("Last node:");
 console.log(list.tail());
 console.log("Node at given index: ");
 console.log(list.at(2));
-
-// remove the last node from the list
-function pop() {
-  // get the second last node and set its nextAddress to null.
-  let secondLastNodeIndex = size() - 2;
-  let secondLastNode = at(secondLastNodeIndex);
-  console.log();
-  console.log("Poped node:");
-  console.log(secondLastNode.nextAddress);
-  secondLastNode.nextAddress = null;
-}
-
-// pop();
-// console.log("New list: ");
-// console.log(list);
+console.log("Last node poped");
+list.pop();
+console.log(list.linkedList);
 
 // returns true if value is in list, otherwise returns false
 function contains(value) {
